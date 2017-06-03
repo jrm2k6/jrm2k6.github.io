@@ -1,0 +1,100 @@
+---
+layout: post
+title: Laracon
+---
+
+**TLDR:**
+
+- Great venue
+- Great people
+- Not enough technical talks
+- Core members are great speakers
+- Jeophpardy
+
+## Venue
+
+The venue was the Kentucky Center, in Louisville downtown. The venue was spacious, and the amphitheater where the talks were located was spacious, with great sound and lighting. The hall was also really big, which make interacting with people easy, and the outside, with the park was great to have lunch, or just some fresh air.
+
+## Audience
+
+The audience consisted of around 400 people I think. It seems it was composed of mostly people working in agencies which was kind of surprising to me. I didn't know so many agencies were using Laravel somehow. People were usually open-minded and easy to talk to. We also met a bunch of folks from San Diego (straight from the airport), so it was nice to meet with them.
+
+### Talks
+Overall, I was really disappointed in the number of technical talks. The two keynotes were great, but besides that, all the other talks were not conference worthy. Especially for a fairly small conference like this. Let's have a quick introduction of each talk and what I got from them.
+
+### Keynote: Leveraging Laravel
+#####Matt Stauffer [Slides](https://speakerdeck.com/mattstauffer/leveraging-laravel-launching-side-projects-quickly-with-laravel)
+
+The opening talk of the conference, focusing on side projects and how Laravel gives you the ability to have something shipped quickly. It went into detail on how Laravel is designed to make you able to go from an idea to an execution really quickly, without having to focus on tedious parts like authentication, registering user and so on. It also mentions how deployment is made really easy with Forge.
+Matt is a great speaker. He is dynamic, his talk was punctuated with many jokes, and his end message was clear: if you want to ship something, use Laravel.
+
+### When it all hits the fan
+#####Eryn O'Neil
+
+Through real stories,  this talk was focusing on what could go wrong in projects. Whether it is because of a lack of communication with a third party, and mistakes from developers, you should always take few steps back, and have a emergency plan. The examples were on point, and (name presenter) did a good job explaining them. I think it was nevertheless focusing on the agency world, which is far from the startup world where the problems can be the same. But having a plan is usually not as a priority as you are usually in small teams with less intermediary parties. And one more thing, fixing in production is not bad..sometimes!
+
+### Chasing perfect
+#####Adam Wathan
+One of the only technical (fairly technical) talks of the conference, with live-coding, that went well! It was interesting how you can go from an ok piece of code to something easily maintainable, extendable and just clean in general. The talk was funny, had a nice pace and the live coding was really what made it interesting. I assumed it is what a good developer should do in general, and this is usually what I strive for, and hopefully I am getting better at it day after day. I like that the talk was focusing on simplicity and how small steps are making a big difference at the end.
+
+### Open sourcing mental illness
+#####Ed Finkler
+A really important topic that hit close to home, as I have been recently struggling with generalized anxiety disorder. I think it was worth having a talk like that in a conference, even if a lot of the figures were not citing the sources, which is a bad point for me. The talk was also getting really long so it kind of lost my attention in the middle. Overall, mental illness in software engineering is something important and should always be mentioned when getting a new position at a company, during the interview process.
+
+### Navigate your git repository
+#####Gemma Lynn
+I was wondering what this talk would be about. This was not at all related to Laravel, and was merely a git tutorial hidden behind some basic graph theory. By the way, mentioning edges, nodes and cycle doesn't make you a graph theory connoisseur (computer science graduate (boooo!) talking here). Even if the talk was explicitly saying it wasn't a git tutorial, it was so just check [this tutorial](https://www.atlassian.com/git/tutorials/using-branches/git-branch) to get most of it.
+
+### Keynote
+#####Taylor Otwell
+
+I was really excited about this talk. First, because Taylor Otwell was the speaker, as he made me like Laravel 8 months ago now, when I started to work at Pocketderm. Secondly, because something big was going to be revealed. After an introduction related to sushi, and how to master something, while still loving to do it, Spark was revealed. In the continuity of Homestead, Cashier and Forge, that focuses on setting up your development environment, your payment configuration and your deploy process, Spark comes with the idea that you should focus on your application logic, not on authenticating, creating or managing your users. We all did this several times throughout our career, reimplementing the same thing, and reusing the same pieces of code over and over again between projects. Spark comes with all those things out of the box, it is just a matter of using the right providers and tweaking a tiny bit to get exactly what you want. It includes:
+
+- registration
+- subscriptions
+- team management
+- invoices
+- emails
+- and so on...
+
+Spark will be released in a few weeks in a Beta, will be open-source and aims to be the foundation for all your Sass services and saves you a lot of time to get your idea/business out there.
+
+
+### Things Laravel made me believe
+#####Jeffrey Way
+
+The famous Jeffrey Way, creator of the Laracasts, took the stage for the first talk of the second day. His talk was focusing on what is important in software engineering and how it gets to those conclusions thanks to using Laravel. He focused on three things: Care, Simplicity, and Distrust.
+
+To illustrate Care, he took several example from the Laravel codebase, one of it being the way comments are structures with each line being one character shorter than the previous one. It is actually an insane level of care if you ask me. He also talked about the development of Elixir and how finding the right name for functions was really important for them as the end goal for the framework is to be simple to use for anyone. There are so many technologies/frameworks/libraries that a front-end developer needs to know that being able to use a framework quickly is important, and care helps to achieve this.
+
+Simplicity. Probably the point he focused on the most. Simplicity is not easy. Something easy is not necessarily something simple. It is impossible to learn everything, so keeping things simple for yourself, and others is a necessary part of being an engineer.
+
+Distrust. Basically, Twitter and Reddit are evil. You will always find haters so don't even bother. If you want to do a project do it, do not care about people's opinion. And don't take any opinion for granted, challenge everything, always.
+
+## Same things happen every time
+#####Paul Jones
+A long, long, long introduction using movies and illustrating always the same patterns in them. Paul Jones then talked about two types of developers: academic and utilitarian. The academic type focuses on patterns, plans, testing, clean code and thinks about the future while the utilitarian focuses on getting things done right now, and goes with the minimum amount of work needed.
+
+A third type was also mentioned: the Problem Child. The problem child is someone intelligent, talented, with close to no empathy, not taking instruction or critiques well, and always finding excuses when something doesn't go his way.
+Disclaimer: I am not a child problem, and like to think of myself as a mix between academic and utilitarian, as everybody else I guess.
+
+
+### Open source and company culture
+#####Brian Webb
+Brian Webb focused on engaged employees and how they help making your company go forward. He mentioned some tips about how to make people more engaged. I did follow the talk until a certain point where I feel I have already heard that before, sorry for the lack of content on this one. :(
+
+### Service-Oriented Laravel and Lumen
+##### Samantha Geitz
+I was waiting for this talk since the first day. Finally, a technical talk. We are going to see some code, some cool stuff. At the end, it was merely an explanation on what micro-services are and how Laravel and Lumen can make it easy, without many details though. Authentication was also explained, and the advantages of using microservices, one of them being that you can have part of your application down without having the whole application down. Microservices make deployment easier even if it can be more expensive at the beginning. You should use micro-services if you think you are going to be big. The issue is that usually, you don't know if you are going to be big. Premature optimization over scaling is the root of all evils.
+
+### Hacking the human interface
+#####Samantha Quinones
+The last talk we attended before getting back to the airport. Samantha Quinones, working at AOL, talked about empathy and how learning how to listen, and have empathy for other people can change your life and other people's' lives, knowing that they are not alone. It was a powerful talk but I was not convinced about the topic at this conference. I do think empathy is an important part of being a human, and also an important part of being one in a team, but do we really need to have an entire talk dedicated to this topic?
+
+### Jeophpardy
+
+Before each lunch, a game of Jeophpardy was played on stage, were randomly selected people from the audience were competing in answering questions about Laravel, Php, and other related topics. The host was Jeremy Mikol. He did an excellent job and it was a really entertaining moment. Everybody was waiting for it the second day, and I know this is one I had the most fun with. This is a great idea and I hope other conferences are going to get inspired by it.
+
+### Conclusion
+
+The Laravel community seems to be growing and it is really nice to see that the core ideas, the simplicity and transparency in the development of Laravel behind it is still intact. The conference was overall great, well-organized, even if I was expecting more technical talks. I don't know if I will go to the next one, but I will for sure try to be part of this community and see what I can do to help.
