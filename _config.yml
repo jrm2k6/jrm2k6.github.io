@@ -23,7 +23,7 @@ github_username:  jrm2k6
 
 # Build settings
 markdown: kramdown
-theme: minima
+theme: jekyll-theme-midnight
 gems:
   - jekyll-feed
 exclude:
