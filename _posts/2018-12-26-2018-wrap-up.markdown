@@ -1,0 +1,58 @@
+---
+layout: post
+title: Wrapping up 2018
+---
+
+Once again, one of my new-year resolution will be to write more blog posts.
+So, to start on a good note (even before 2019!), I wanted to write about what I did and did not achieve this year.
+
+## What were my goals in 2018?
+
+Those were my main objectives when it comes to programming for 2018:
+
+- write a blog post a week
+- make my first dollar from one of my side projects
+- do more Leetcode problems
+- get better at devops work
+
+## How did it go?
+
+#### Write a blog post a week
+
+__Result: Didn't happen! 🙁__
+
+I feel like I don't have a lot of interesting things to explain. I still struggle to go into a lot of details
+when it comes to explaining solutions to programming issues. I decided on writing blog posts to just explain
+what I work on and how I approach problems I have no idea how to go about.
+
+#### Make my first dollar from one of my side-projects
+
+__Result: Didn't happen! 🙁__
+
+Unfortunately, I had to shut-down my main side-project and have been started a few new ones but abandoned most of them as I discovered the idea was not great or already done.
+
+#### Do more Leetcode problems
+
+__Result: Kind of happened!__
+
+I did a few problems here and there but wasn't dedicated enough to do them every other day. I was either too busy/tired with work, or simply doing something else.
+
+#### Get better at devops work
+
+__Result: It happened!__
+
+On that front, I think I made a lot of progress. I digged a lot more into AWS, debugged and fixed a few tough issues related to some of our Docker containers for a service I worked on at Adroll.
+I also worked on a side-project where I made use of ECS, and tinkered with writing some nice deployments scripts.
+This project is a perfect toy-project as it started with a simple SQLite DB, no caching, no queues and local storage of files on the container itself (making it pretty useless),
+but I am making it production ready by switching to RDS, S3, SQS and so on. It also made me realize that I really like working on developer tools, as I am usually able to use it for myself so it adds extra motivation.
+
+
+## What are my goal for 2019?
+- write a blog post per week.
+- make my first dollar from one of my side projects.
+- read more technical books, aiming for 12 a year.
+- do more public speaking (tech talks, meetups)
+- contribute more to open-source.
+- release a Flutter app.
+- tinker with Arduino.
+
