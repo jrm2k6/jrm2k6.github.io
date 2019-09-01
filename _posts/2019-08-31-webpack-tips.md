@@ -12,27 +12,27 @@ Note: I will try to update this list as I discover more things. This is more a d
 ### Nice aliases for your imports
 
 Nothing worse that seeing some imports being like this:
-```
+{% highlight javascript %}
 import MyBeautifulComponent from "../../../../components/MyBeautifulComponent";
-```
+{% endhighlight %}
 
 A few workarounds here:
 - don't nest your folders that much
 - webpack aliases
 
 To be able to use something like:
-```
+{% highlight javascript %}
 import MyBeautifulComponent from "components/MyBeautifulComponents"
-```
+{% endhighlight %}
 wherever you are located in your project, just add the following to your webpack config:
 
-```
+{% highlight javascript %}
 resolve: {
         alias: {
             components: path.resolve(__dirname, 'src/components'),
         }
     },
-```
+{% endhighlight %}
 
 Reference: [resolvealias](https://webpack.js.org/configuration/resolve/#resolvealias)
 
@@ -46,22 +46,23 @@ Make sure you have the [dynamic-import](https://babeljs.io/docs/en/babel-plugin-
 Let's say we have a big chunk of code that we don't necessarily need imported. Let's put the entry point of that file in a file name bigChunk.js.
 
 For the sake of an example:
-```
+{% highlight javascript %}
 export default function getBigContent() {
     /*
         Imagine a bunch of imports at the top, and a lot of function calls in here
     */
     return [];
 }
-```
+{% endhighlight %}
 
 If you want to load it if an `if` condition is triggered, in app.js:
-```
+
+{% highlight javascript %}
 if (shouldLoadBigChunk) {
     const getBigContentBundle = await import("bigChunk");
     const getBigContentFunction = getBigContentBundle.default;
 }
-```
+{% endhighlight %}
 This is assuming that `app.js` and `bigChunk.js` are actually in the same folder in your application.
 What happens when bundling is that Webpack will create a new bundle only for bigChunk.js. When it is imported, a network request will be done to fetch the bundle and execute it.
 `import` returns a promise so make sure to use async/await for ease of use.
@@ -71,9 +72,9 @@ What happens when bundling is that Webpack will create a new bundle only for big
 If we have the configuration above, Webpack will generate a bundle with a random hash, which can make debugging a bit harder when you want to verify that it is actually loaded. To make things easier, you can use the magic comment Webpack provides.
 
 If you update `const getBigContentBundle = await import("bigChunk");` to
-```
+{% highlight javascript %}
 const getBigContentBundle = await import(/* webpackChunkName: "bigChunk" */ "bigChunk");
-```
+{% endhighlight %}
 Webpack will now generate a bundle named `bigChunk.js` istead of a random name.
 
 ### Gotchas
@@ -89,13 +90,13 @@ For more information: [Webpack public path](https://webpack.js.org/guides/public
 To solve my issue, I did:
 - set `__webpack_public_path__` in my entrypoint script (app.js).
 - specify an alias to use for my dynamically imported bundle, something like:
-```
+{% highlight javascript %}
 resolve: {
-      alias: {
+    alias: {
         bigChunk$: path.resolve(__dirname, "..", "client", "bigChunks.js")
-      }
-    },
-```
+    }
+},
+{% endhighlight %}
 
 This means that I could simple refer to `await import(/* webpackChunkName: "bigChunk" */ "bigChunk");` even if bigChunk.js isn't a sibling of the file importing it.
 
@@ -106,7 +107,7 @@ Nowadays, I work with a Nodejs/Express backend and React frontends, in separate 
 [webpack dev server](https://webpack.js.org/configuration/dev-server/) lets you specify where to proxy the requests that are not for your static assets or your hot-reloaded frontend bundle to go to your backend.
 This is an example of a configuration:
 
-```
+{% highlight javascript %}
 devServer: {
         https: true,
         publicPath: "/static/",
@@ -126,7 +127,7 @@ devServer: {
             }
         }
     }
-```
+{% endhighlight %}
 
 ### Conclusion
 
