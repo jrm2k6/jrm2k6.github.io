@@ -27,7 +27,7 @@ google_analytics: UA-48045020-1
 markdown: kramdown
 theme: minima
 highlighter: rouge
-gems:
+plugins:
   - jekyll-feed
 exclude:
   - Gemfile
