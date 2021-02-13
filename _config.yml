@@ -32,3 +32,14 @@ plugins:
 exclude:
   - Gemfile
   - Gemfile.lock
+
+header_pages:
+  - about.md
+  - projects.md
+  - food-challenge.md
+
+defaults:
+  - scope:
+      path: "assets/img"
+    values:
+      image: true
