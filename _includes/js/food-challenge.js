@@ -1,8 +1,8 @@
 const foodIcons = {
-    pizza: ['2021-01-20', null],
-    burger: ['2021-02-06', null],
-    'french-fries': ['2021-02-06', null],
-    beer: ['2021-02-07', null],
+    pizza: ['2021-06-06', null],
+    burger: ['2021-06-05', null],
+    'french-fries': ['2021-06-05', null],
+    beer: ['2021-06-08', null],
     soda: ['2021-02-06', null],
     cupcake: ['2021-02-07', null],
 };
