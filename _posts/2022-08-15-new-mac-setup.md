@@ -1,6 +1,6 @@
 ---
 layout: post
-title: To-Do list for new laptop setup
+title: To-Do list for new laptop setup (updated)
 ---
 
 I had my personal Macbook for almost 10 years now, so it is bound to die anytime soon. Over the last year, I had to set up my development environment from scratch at least three times, due to a new job, some contracting work, and on a replacement laptop due to my battery dying.
@@ -18,6 +18,9 @@ I will try to keep this list up to date, as I am doing it from memory right now.
 - Flux: takes care of the ligthing of my screen as time goes by
 - ITerm: my terminal of choice
 - Sequel Pro: GUI for MySql
+
+## Command line libraries
+- tree (through `brew install tree`) to display directory structures as a nicely laid out tree.
 
 ## Tools
 
