@@ -36,6 +36,7 @@ exclude:
 header_pages:
   - about.md
   - projects.md
+  - resume.md
   - food-challenge.md
 
 defaults:
