@@ -24,8 +24,46 @@
             {%- endif -%}
           {%- endfor -%}
           <a class="page-link" href="{{ "/assets/pdf/resume.pdf" | relative_url }}">Resume</a>
+          <span class="work-with-me">
+            <button class="page-link work-with-me-trigger" type="button" aria-expanded="false" aria-controls="work-with-me-tooltip" data-work-with-me-open>Work with me</button>
+            <span class="work-with-me-tooltip" id="work-with-me-tooltip" role="status" data-work-with-me-tooltip hidden>
+              <span>I am always looking for interesting contract work!</span>
+              <a href="mailto:{{ site.email }}">Reach out!</a>
+            </span>
+          </span>
         </div>
       </nav>
     {%- endif -%}
   </div>
+
+  <script>
+    (() => {
+      const trigger = document.querySelector('[data-work-with-me-open]');
+      const tooltip = document.querySelector('[data-work-with-me-tooltip]');
+
+      if (!tooltip || !trigger) return;
+
+      const closeTooltip = () => {
+        tooltip.hidden = true;
+        trigger.setAttribute('aria-expanded', 'false');
+      };
+
+      trigger.addEventListener('click', () => {
+        const willOpen = tooltip.hidden;
+        tooltip.hidden = !willOpen;
+        trigger.setAttribute('aria-expanded', String(willOpen));
+      });
+
+      document.addEventListener('click', (event) => {
+        if (!event.target.closest('.work-with-me')) closeTooltip();
+      });
+
+      document.addEventListener('keydown', (event) => {
+        if (event.key === 'Escape' && !tooltip.hidden) {
+          closeTooltip();
+          trigger.focus();
+        }
+      });
+    })();
+  </script>
 </header>
