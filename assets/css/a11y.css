@@ -1,0 +1,11 @@
+/* Contrast fixes over Minima's defaults (WCAG 2.2 AA, 4.5:1 for normal text).
+   Minima's #828282 grey is 3.8:1 and #2a7ae2 links are 4.2:1 on white; these
+   pass on the plain page and over the weather backdrop's faint tint. */
+
+a { color: #1f66c7; }                 /* 5.5:1 (was #2a7ae2) */
+
+.post-meta,
+.footer-col-wrapper,
+blockquote { color: #666; }           /* 5.6:1 (was #828282) */
+
+.svg-icon { fill: #666; }

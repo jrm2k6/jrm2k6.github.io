@@ -32,6 +32,24 @@ plugins:
 exclude:
   - Gemfile
   - Gemfile.lock
+  - worker
+  - node_modules
+  - AGENTS.md
+  - cert.pem
+
+# Animated weather backdrop (assets/js/weather-backdrop.js).
+# endpoint: the Cloudflare Worker's GET /location URL (see worker/README.md).
+# fallback: used when no endpoint is set or the Worker can't be reached.
+weather_backdrop:
+  enabled: true
+  endpoint: ""
+  fallback:
+    city: Buffalo, NY
+    name: Buffalo
+    country_code: US
+    lat: 42.8864
+    lon: -78.8784
+    scene: buffalo
 
 header_pages:
   - about.md

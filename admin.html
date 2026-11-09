@@ -1,0 +1,119 @@
+---
+layout: page
+title: Location
+permalink: /admin/
+sitemap: false
+noindex: true
+weather_backdrop: false
+---
+<style>
+  .loc-admin { max-width: 460px; display: grid; gap: 18px; }
+  .loc-admin fieldset { border: 1px solid #e8e8e8; border-radius: 10px; padding: 14px 16px 16px; margin: 0; display: grid; gap: 10px; }
+  .loc-admin legend { padding: 0 6px; color: #555; font-size: 14px; }
+  .loc-admin label { display: grid; gap: 4px; font-size: 14px; color: #444; }
+  .loc-admin input[type=text], .loc-admin input[type=password], .loc-admin select {
+    font: inherit; padding: 8px 10px; border: 1px solid #ccc; border-radius: 8px; background: #fff; width: 100%; box-sizing: border-box;
+  }
+  .loc-admin .inline { display: flex; align-items: center; gap: 8px; font-size: 14px; color: #555; }
+  .loc-admin button { font: inherit; padding: 9px 14px; border-radius: 8px; border: 1px solid #222; background: #222; color: #fff; cursor: pointer; }
+  .loc-admin button.secondary { background: #fff; color: #222; border-color: #ccc; }
+  .loc-admin button:disabled { opacity: .5; cursor: progress; }
+  .loc-admin .row { display: flex; gap: 8px; flex-wrap: wrap; }
+  .loc-admin .row > * { flex: 1 1 auto; }
+  .loc-admin .current { font-size: 15px; }
+  .loc-admin .status { min-height: 1.4em; font-size: 14px; }
+  .loc-admin .status.error { color: #b3261e; }
+  .loc-admin .status.ok { color: #1e7b34; }
+</style>
+
+<div class="loc-admin">
+  <p class="current">Currently showing: <strong id="current">…</strong></p>
+
+  <fieldset>
+    <legend>Access</legend>
+    <label>Admin token <input id="token" type="password" autocomplete="current-password" spellcheck="false"></label>
+    <label class="inline"><input id="remember" type="checkbox"> Remember on this device</label>
+  </fieldset>
+
+  <fieldset>
+    <legend>Where are you?</legend>
+    <label>City or place <input id="query" type="text" placeholder="e.g. Chamonix" autocomplete="off"></label>
+    <label>Backdrop
+      <select id="scene">
+        <option value="auto">Pick automatically</option>
+        <option value="buffalo">Buffalo</option>
+        <option value="sandiego">San Diego</option>
+        <option value="city">Generic city</option>
+      </select>
+    </label>
+    <div class="row">
+      <button type="button" id="save-query">Set this place</button>
+      <button type="button" id="save-gps" class="secondary">Use my current location</button>
+    </div>
+    <p class="status" id="status" role="status"></p>
+  </fieldset>
+</div>
+
+<script>
+(() => {
+  const ENDPOINT = {{ site.weather_backdrop.endpoint | default: '' | jsonify }};
+  const KEY = 'wx-admin-token';
+  const $ = id => document.getElementById(id);
+  const status = (msg, kind = '') => { $('status').textContent = msg; $('status').className = 'status ' + kind; };
+  const describe = loc => `${loc.city}${loc.scene ? ' · ' + loc.scene + ' backdrop' : ''}`;
+
+  try { const saved = localStorage.getItem(KEY); if (saved) { $('token').value = saved; $('remember').checked = true; } } catch {}
+
+  if (!ENDPOINT) {
+    $('current').textContent = 'no endpoint configured';
+    status('Set weather_backdrop.endpoint in _config.yml first.', 'error');
+    document.querySelectorAll('.loc-admin button').forEach(b => b.disabled = true);
+    return;
+  }
+
+  fetch(ENDPOINT).then(r => r.json()).then(loc => { $('current').textContent = describe(loc); })
+    .catch(() => { $('current').textContent = 'unavailable'; });
+
+  async function save(body) {
+    const token = $('token').value.trim();
+    if (!token) { status('Enter your admin token.', 'error'); $('token').focus(); return; }
+    try { $('remember').checked ? localStorage.setItem(KEY, token) : localStorage.removeItem(KEY); } catch {}
+    const scene = $('scene').value;
+    document.querySelectorAll('.loc-admin button').forEach(b => b.disabled = true);
+    status('Saving…');
+    try {
+      const r = await fetch(ENDPOINT, {
+        method: 'PUT',
+        headers: { 'Content-Type': 'application/json', Authorization: 'Bearer ' + token },
+        body: JSON.stringify({ ...body, scene }),
+      });
+      const data = await r.json().catch(() => ({}));
+      if (!r.ok) throw new Error(r.status === 401 ? 'wrong token' : data.error || 'HTTP ' + r.status);
+      $('current').textContent = describe(data);
+      status('Saved. Visitors see it within about a minute.', 'ok');
+    } catch (e) {
+      status('Could not save: ' + e.message, 'error');
+    } finally {
+      document.querySelectorAll('.loc-admin button').forEach(b => b.disabled = false);
+    }
+  }
+
+  $('save-query').addEventListener('click', () => {
+    const query = $('query').value.trim();
+    if (!query) { status('Type a city first.', 'error'); $('query').focus(); return; }
+    save({ query });
+  });
+  $('query').addEventListener('keydown', e => { if (e.key === 'Enter') $('save-query').click(); });
+
+  $('save-gps').addEventListener('click', () => {
+    if (!navigator.geolocation) { status('This browser has no location access.', 'error'); return; }
+    status('Getting your location…');
+    navigator.geolocation.getCurrentPosition(
+      // City-level only: coordinates are rounded before they leave this page.
+      pos => save({ lat: Math.round(pos.coords.latitude * 100) / 100, lon: Math.round(pos.coords.longitude * 100) / 100 }),
+      err => status('Location unavailable: ' + err.message, 'error'),
+      { enableHighAccuracy: false, timeout: 15000, maximumAge: 600000 },
+    );
+  });
+})();
+</script>

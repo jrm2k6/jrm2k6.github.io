@@ -2,9 +2,16 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    {%- if page.noindex %}
+    <meta name="robots" content="noindex, nofollow">
+    {%- endif %}
     {%- seo -%}
     <link rel="stylesheet" href="{{ "/assets/main.css" | relative_url }}">
+    <link rel="stylesheet" href="{{ "/assets/css/a11y.css" | relative_url }}">
     <link rel="stylesheet" href="{{ "/assets/css/work-with-me.css" | relative_url }}">
+    {%- if site.weather_backdrop and site.weather_backdrop.enabled != false and page.weather_backdrop != false %}
+    <link rel="stylesheet" href="{{ "/assets/css/weather-backdrop.css" | relative_url }}">
+    {%- endif %}
     {% if page.custom_css %}
     {% for stylesheet in page.custom_css %}
     <link rel="stylesheet" href="{{ site.baseurl }}/assets/css/{{ stylesheet }}.css">

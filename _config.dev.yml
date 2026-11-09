@@ -1,0 +1,5 @@
+# Local development overrides:
+#   (cd worker && ADMIN_TOKEN=<any local token> npm run dev)
+#   bundle exec jekyll serve --config _config.yml,_config.dev.yml
+weather_backdrop:
+  endpoint: "http://localhost:8787/location"

@@ -1,0 +1,84 @@
+/* Weather backdrop: canvas behind the page, location badge, ?wx test panel */
+
+#wx {
+  position: fixed;
+  inset: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: 0;
+  pointer-events: none;
+  display: block;
+  opacity: 0;
+  transition: opacity 900ms ease;
+}
+#wx.is-ready { opacity: 1; }
+
+/* Lift the page above the canvas. Header sits above content so the
+   "Work with me" tooltip can overlap the page. */
+.site-header { position: relative; z-index: 2; }
+.page-content, .site-footer { position: relative; z-index: 1; }
+
+.wx-badge {
+  position: fixed;
+  right: 16px;
+  bottom: 16px;
+  z-index: 3;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  max-width: calc(100vw - 32px);
+  padding: 6px 12px 6px 10px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.78);
+  -webkit-backdrop-filter: blur(6px);
+  backdrop-filter: blur(6px);
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  box-shadow: 0 1px 6px rgba(0, 0, 0, 0.06);
+  color: #333;
+  font-size: 13px;
+  line-height: 1.3;
+}
+.wx-badge svg { width: 14px; height: 14px; flex: none; }
+.wx-badge span { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.wx-badge:has(#wx-badge-text:empty) { display: none; }
+
+@media print {
+  #wx, .wx-badge, .wx-panel { display: none !important; }
+}
+
+/* ---- test panel, only mounted with ?wx ---- */
+.wx-panel {
+  position: fixed;
+  left: 16px;
+  bottom: 16px;
+  z-index: 4;
+  width: 268px;
+  background: rgba(255, 255, 255, 0.94);
+  -webkit-backdrop-filter: blur(8px);
+  backdrop-filter: blur(8px);
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  border-radius: 12px;
+  box-shadow: 0 6px 24px rgba(0, 0, 0, 0.12);
+  color: #222;
+  font-size: 13px;
+  line-height: 1.4;
+}
+.wx-panel summary { cursor: pointer; padding: 10px 14px; font-weight: 600; list-style: none; display: flex; justify-content: space-between; }
+.wx-panel summary::-webkit-details-marker { display: none; }
+.wx-panel summary::after { content: "\25BE"; color: #888; }
+.wx-panel[open] summary::after { content: "\25B4"; }
+.wx-body { padding: 0 14px 14px; display: grid; gap: 10px; }
+.wx-body label { display: grid; gap: 4px; color: #555; }
+.wx-body select, .wx-body input[type="text"], .wx-body button {
+  font: inherit; padding: 6px 8px; border: 1px solid #ccc; border-radius: 7px; background: #fff; color: #222; width: 100%;
+}
+.wx-body button { cursor: pointer; background: #222; color: #fff; border-color: #222; }
+.wx-body button.wx-secondary { background: #fff; color: #222; border-color: #ccc; }
+.wx-row { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+.wx-seg { display: grid; grid-template-columns: repeat(3, 1fr); gap: 4px; }
+.wx-seg button { padding: 5px 4px; background: #fff; color: #222; border-color: #ccc; font-size: 12px; }
+.wx-seg button[aria-pressed="true"] { background: #222; color: #fff; border-color: #222; }
+.wx-note { color: #777; font-size: 12px; min-height: 1em; }
+.wx-sep { border-top: 1px solid #e5e5e5; padding-top: 8px; color: #555; }
+.wx-body input[type="range"] { width: 100%; }
+@media (max-width: 600px) { .wx-panel { right: 16px; width: auto; bottom: 60px; } }

@@ -1,0 +1,17 @@
+name = "jeremydagorn-location-api"
+main = "src/index.js"
+compatibility_date = "2026-10-01"
+# Serve on https://jeremydagorn-location-api.<account>.workers.dev (the endpoint the site uses).
+# Set to false only if you move it to a custom domain like api.jeremydagorn.com.
+workers_dev = true
+
+[vars]
+ALLOWED_ORIGINS = "https://jeremydagorn.com,https://www.jeremydagorn.com,http://localhost:4000,http://127.0.0.1:4000"
+
+# Create with: npx wrangler kv namespace create jeremydagorn-location-api
+# then paste the id it prints below.
+[[kv_namespaces]]
+binding = "LOCATION"
+id = "441d85b308d445609d884a168856517e"
+
+# Secret (not in this file): npx wrangler secret put ADMIN_TOKEN

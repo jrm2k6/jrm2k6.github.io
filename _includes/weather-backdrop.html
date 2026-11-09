@@ -1,0 +1,11 @@
+{%- assign wx = site.weather_backdrop -%}
+{%- if wx and wx.enabled != false and page.weather_backdrop != false -%}
+<canvas id="wx" aria-hidden="true"
+  data-endpoint="{{ wx.endpoint | default: '' | escape }}"
+  data-fallback="{{ wx.fallback | jsonify | escape }}"></canvas>
+<div class="wx-badge" role="status" aria-live="polite">
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21s-6-5.6-6-11a6 6 0 1 1 12 0c0 5.4-6 11-6 11z"/><circle cx="12" cy="10" r="2.2"/></svg>
+  <span id="wx-badge-text"></span>
+</div>
+<script src="{{ '/assets/js/weather-backdrop.js' | relative_url }}" defer></script>
+{%- endif -%}
