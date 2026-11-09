@@ -42,7 +42,7 @@ exclude:
 # fallback: used when no endpoint is set or the Worker can't be reached.
 weather_backdrop:
   enabled: true
-  endpoint: ""
+  endpoint: "https://jeremydagorn-location-api.jeremy-dagorn.workers.dev/location"
   fallback:
     city: Buffalo, NY
     name: Buffalo
