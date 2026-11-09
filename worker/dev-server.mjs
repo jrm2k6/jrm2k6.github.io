@@ -1,19 +1,19 @@
 // Local stand-in for `wrangler dev`, no dependencies.
-//   ADMIN_TOKEN=some-local-token node dev-server.mjs
+//   JEREMY_DAGORN_ADMIN_TOKEN=some-local-token node dev-server.mjs
 // Serves the worker on http://localhost:8787 with an in-memory KV.
 import http from 'node:http';
 import worker from './src/index.js';
 
 const store = new Map();
 const env = {
-  ADMIN_TOKEN: process.env.ADMIN_TOKEN,
+  JEREMY_DAGORN_ADMIN_TOKEN: process.env.JEREMY_DAGORN_ADMIN_TOKEN,
   ALLOWED_ORIGINS: 'http://localhost:4000,http://127.0.0.1:4000',
   LOCATION: {
     async get(k, type) { const v = store.get(k); return v == null ? null : type === 'json' ? JSON.parse(v) : v; },
     async put(k, v) { store.set(k, v); },
   },
 };
-if (!env.ADMIN_TOKEN) console.warn('ADMIN_TOKEN is not set: PUT requests will be rejected.');
+if (!env.JEREMY_DAGORN_ADMIN_TOKEN) console.warn('JEREMY_DAGORN_ADMIN_TOKEN is not set: PUT requests will be rejected.');
 
 const port = Number(process.env.PORT) || 8787;
 http.createServer(async (inc, out) => {

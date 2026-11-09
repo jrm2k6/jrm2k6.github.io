@@ -3,7 +3,7 @@
 A small Cloudflare Worker that stores where I am, so the weather backdrop on jeremydagorn.com can show that city's live weather, local time and scenery. Jekyll is unchanged: the site just reads `GET /location` when a page loads.
 
 - `GET /location`: public. Returns city-level data only, cached for 60 s.
-- `PUT /location`: needs `Authorization: Bearer <ADMIN_TOKEN>`.
+- `PUT /location`: needs `Authorization: Bearer <JEREMY_DAGORN_ADMIN_TOKEN>`.
   - `{"query": "Chamonix"}` looks a place up by name (Open-Meteo geocoding).
   - `{"lat": 45.92, "lon": 6.87}` reverse-geocodes coordinates (OpenStreetMap Nominatim), e.g. from phone GPS.
   - Optional `"scene"`: `auto` (default, the page picks) or one of `buffalo`, `sandiego`, `city` (generic skyline).
@@ -19,7 +19,7 @@ npx wrangler login
 npx wrangler kv namespace create jeremydagorn-location-api   # paste the printed id into wrangler.toml
                                                              # (the title is just a label; the code uses the
                                                              #  binding name LOCATION from wrangler.toml)
-npx wrangler secret put ADMIN_TOKEN         # paste a long random string, e.g. from: openssl rand -hex 24
+npx wrangler secret put JEREMY_DAGORN_ADMIN_TOKEN         # paste a long random string, e.g. from: openssl rand -hex 24
 npx wrangler deploy                         # prints https://jeremydagorn-location-api.<account>.workers.dev
 ```
 
@@ -38,7 +38,7 @@ Optional: put it on your own domain (for example `api.jeremydagorn.com`) under W
 - **curl**:
   ```sh
   curl -X PUT https://jeremydagorn-location-api.<account>.workers.dev/location \
-    -H "Authorization: Bearer $ADMIN_TOKEN" -d '{"query":"La Jolla"}'
+    -H "Authorization: Bearer $JEREMY_DAGORN_ADMIN_TOKEN" -d '{"query":"La Jolla"}'
   ```
 - **iOS Shortcut** (one tap, or automatic):
   1. *Get Current Location*
@@ -49,7 +49,7 @@ Optional: put it on your own domain (for example `api.jeremydagorn.com`) under W
 
 ```sh
 npm test                                     # unit tests, no network
-ADMIN_TOKEN=local-dev-token npm run dev      # worker on http://localhost:8787 with in-memory storage
+JEREMY_DAGORN_ADMIN_TOKEN=local-dev-token npm run dev      # worker on http://localhost:8787 with in-memory storage
 # in the repo root:
 bundle exec jekyll serve --config _config.yml,_config.dev.yml
 ```

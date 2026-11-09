@@ -1,7 +1,7 @@
 // Location API for the jeremydagorn.com weather backdrop.
 //
 // GET  /location   public, returns where Jeremy currently is (city level)
-// PUT  /location   requires "Authorization: Bearer <ADMIN_TOKEN>"
+// PUT  /location   requires "Authorization: Bearer <JEREMY_DAGORN_ADMIN_TOKEN>"
 //   {"query": "Chamonix"}            look a place up by name
 //   {"lat": 45.92, "lon": 6.87}      reverse-geocode coordinates (e.g. phone GPS)
 //   optional "scene": force one of SCENES, or "auto" / omitted to let the page decide
@@ -32,9 +32,9 @@ const json = (data, status, headers) =>
   new Response(JSON.stringify(data), { status, headers: { 'Content-Type': 'application/json; charset=utf-8', ...headers } });
 
 function authorized(req, env) {
-  if (!env.ADMIN_TOKEN) return false;
+  if (!env.JEREMY_DAGORN_ADMIN_TOKEN) return false;
   const got = req.headers.get('Authorization') || '';
-  const want = `Bearer ${env.ADMIN_TOKEN}`;
+  const want = `Bearer ${env.JEREMY_DAGORN_ADMIN_TOKEN}`;
   let diff = got.length ^ want.length;
   for (let i = 0; i < want.length; i++) diff |= (got.charCodeAt(i) || 0) ^ want.charCodeAt(i);
   return diff === 0;

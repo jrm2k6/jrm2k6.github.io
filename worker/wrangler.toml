@@ -14,4 +14,4 @@ ALLOWED_ORIGINS = "https://jeremydagorn.com,https://www.jeremydagorn.com,http://
 binding = "LOCATION"
 id = "441d85b308d445609d884a168856517e"
 
-# Secret (not in this file): npx wrangler secret put ADMIN_TOKEN
+# Secret (not in this file): npx wrangler secret put JEREMY_DAGORN_ADMIN_TOKEN

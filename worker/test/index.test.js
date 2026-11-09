@@ -30,7 +30,7 @@ beforeEach(() => {
   };
 });
 
-const env = () => ({ LOCATION: memKV(), ADMIN_TOKEN: 'test-token-123', ALLOWED_ORIGINS: 'https://jeremydagorn.com,http://localhost:4000' });
+const env = () => ({ LOCATION: memKV(), JEREMY_DAGORN_ADMIN_TOKEN: 'test-token-123', ALLOWED_ORIGINS: 'https://jeremydagorn.com,http://localhost:4000' });
 const req = (method, body, headers = {}) => new Request('https://api.test/location', {
   method, headers: { 'Content-Type': 'application/json', ...headers }, body: body == null ? undefined : JSON.stringify(body),
 });
@@ -52,8 +52,8 @@ test('PUT without the right token is rejected and stores nothing', async () => {
   assert.equal(calls.length, 0, 'no upstream lookups for unauthenticated requests');
 });
 
-test('PUT with no ADMIN_TOKEN configured is always rejected', async () => {
-  const e = { ...env(), ADMIN_TOKEN: undefined };
+test('PUT with no JEREMY_DAGORN_ADMIN_TOKEN configured is always rejected', async () => {
+  const e = { ...env(), JEREMY_DAGORN_ADMIN_TOKEN: undefined };
   const res = await worker.fetch(req('PUT', { query: 'Chamonix' }, { Authorization: 'Bearer undefined' }), e);
   assert.equal(res.status, 401);
 });
