@@ -1,0 +1,119 @@
+/* /releases/: one trunk line, one dot per tag colored by project. */
+
+.releases {
+  --trunk: #f0a030;
+  list-style: none;
+  margin: 1.5rem 0 0;
+  padding: 0 0 0 28px;
+  position: relative;
+}
+
+.releases::before {
+  content: "";
+  position: absolute;
+  left: 9px;
+  top: 18px;
+  bottom: 18px;
+  width: 2.5px;
+  background: var(--trunk);
+  border-radius: 2px;
+}
+
+.releases li {
+  position: relative;
+  margin: 0;
+  min-height: 36px;
+  display: flex;
+  align-items: center;
+}
+
+.releases li::before {
+  content: "";
+  position: absolute;
+  left: -24px;
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  background: var(--c);
+  box-shadow: 0 0 0 2px #fff;
+}
+
+.releases-year h2 {
+  font-size: 1rem;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  margin: 0;
+}
+
+.releases li.releases-year::before {
+  left: -26px;
+  width: 9px;
+  height: 9px;
+  background: #fff;
+  border: 2.5px solid var(--trunk);
+  box-shadow: none;
+}
+
+.release-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex: 1;
+  min-width: 0;
+  padding: 4px 8px 4px 4px;
+  border-radius: 6px;
+  color: #111;
+  text-decoration: none;
+}
+
+a.release-row:hover { background: #f5f5f3; }
+a.release-row:hover .release-msg { color: #333; }
+
+.release time,
+.release-kind {
+  color: #666;
+  font-size: 0.8125rem;
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+}
+
+.release time { width: 3.2em; flex: none; }
+.release-kind { margin-left: auto; padding-left: 8px; }
+
+.release-pill {
+  display: inline-flex;
+  flex: none;
+  font-size: 0.875rem;
+  line-height: 22px;
+  white-space: nowrap;
+}
+
+.release-repo {
+  background: var(--c);
+  color: #fff;
+  font-weight: 600;
+  padding: 0 8px;
+  border-radius: 5px 0 0 5px;
+}
+
+.release-tag {
+  border: 1.5px solid var(--c);
+  border-left: 0;
+  border-radius: 0 5px 5px 0;
+  background: color-mix(in srgb, var(--c) 12%, #fff);
+  padding: 0 7px;
+  font-variant-numeric: tabular-nums;
+}
+
+.release-msg {
+  color: #666;
+  flex: 1;
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+@media (max-width: 600px) {
+  .release-msg { display: none; }
+}

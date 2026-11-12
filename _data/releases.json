@@ -1,0 +1,29 @@
+[
+  {
+    "repo": "melentur-macos",
+    "source": "jrm2k6/melentur-macos",
+    "tag": "v1.0.6",
+    "sha": "aac53bcb70f4f35fbb03e12a2e34d87690aa93ba",
+    "date": "2026-11-12T01:00:33Z",
+    "message": "Initial commit",
+    "url": null
+  },
+  {
+    "repo": "libero90",
+    "source": "jrm2k6/libero90",
+    "tag": "v0.2.21",
+    "sha": "2dd2f4012439a123065aa599741ca821093f88c3",
+    "date": "2026-11-12T00:48:54Z",
+    "message": "docs: explain the extension logic in the README",
+    "url": null
+  },
+  {
+    "repo": "melentur-web",
+    "source": "jrm2k6/stretchmate-web",
+    "tag": "v1.0.0",
+    "sha": "16fe375256f346258b2cec59660f522aa79744c5",
+    "date": "2026-10-30T04:22:10Z",
+    "message": "Merge pull request #1 from jrm2k6/feat/bamboo-logo",
+    "url": null
+  }
+]

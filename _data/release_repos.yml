@@ -1,0 +1,17 @@
+# Repos shown on /releases/. scripts/fetch_releases.rb reads this list and
+# writes _data/releases.json.
+#   repo:  owner/name on GitHub
+#   name:  optional display name (defaults to the repo name)
+#   kind:  small label on the right of each row
+#   color: pill and dot color
+# Private repos are shown without a link to GitHub.
+- repo: jrm2k6/stretchmate-web
+  name: melentur-web
+  kind: web
+  color: "#3b6fd9"
+- repo: jrm2k6/libero90
+  kind: extension
+  color: "#1f9d55"
+- repo: jrm2k6/melentur-macos
+  kind: macOS
+  color: "#d4568f"

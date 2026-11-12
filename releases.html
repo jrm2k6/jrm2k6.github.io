@@ -1,0 +1,34 @@
+---
+layout: page
+title: Releases
+permalink: /releases/
+custom_css:
+  - releases
+---
+
+<p>Every tagged version across my projects, newest first.</p>
+
+{%- assign repos = site.data.release_repos -%}
+<ol class="releases">
+{%- assign current_year = "" -%}
+{%- for r in site.data.releases -%}
+  {%- assign year = r.date | slice: 0, 4 -%}
+  {%- if year != current_year -%}
+    {%- assign current_year = year %}
+  <li class="releases-year"><h2>{{ year }}</h2></li>
+  {%- endif -%}
+  {%- assign meta = repos | where_exp: "x", "x.repo == r.source" | first %}
+  <li class="release" style="--c: {{ meta.color | default: '#666' }}">
+    {%- if r.url %}
+    <a class="release-row" href="{{ r.url }}" target="_blank" rel="noopener">
+    {%- else %}
+    <span class="release-row">
+    {%- endif %}
+      <time datetime="{{ r.date }}">{{ r.date | date: "%b %d" }}</time>
+      <span class="release-pill"><span class="release-repo">{{ r.repo }}</span><span class="release-tag">{{ r.tag }}</span></span>
+      <span class="release-msg">{{ r.message | escape }}</span>
+      {%- if meta.kind %}<span class="release-kind">{{ meta.kind }}</span>{% endif %}
+    {%- if r.url %}</a>{% else %}</span>{% endif %}
+  </li>
+{%- endfor %}
+</ol>

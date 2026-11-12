@@ -36,6 +36,7 @@ exclude:
   - node_modules
   - AGENTS.md
   - cert.pem
+  - scripts
 
 # Animated weather backdrop (assets/js/weather-backdrop.js).
 # endpoint: the Cloudflare Worker's GET /location URL (see worker/README.md).
@@ -54,6 +55,7 @@ weather_backdrop:
 header_pages:
   - about.md
   - projects.md
+  - releases.html
   - food-challenge.md
 
 defaults:
