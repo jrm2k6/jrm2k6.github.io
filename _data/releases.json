@@ -2,6 +2,15 @@
   {
     "repo": "libero90",
     "source": "jrm2k6/libero90",
+    "tag": "v0.2.24",
+    "sha": "45f7c7d83c83d29936f503d93843bf4250a1b75e",
+    "date": "2026-11-13T05:11:44Z",
+    "message": "Merge pull request #7 from jrm2k6/feat/panel-viewed-section",
+    "url": null
+  },
+  {
+    "repo": "libero90",
+    "source": "jrm2k6/libero90",
     "tag": "v0.2.23",
     "sha": "b705e2b659bf223aac8951f589f3bfc2aeb2c2e9",
     "date": "2026-11-13T01:25:31Z",
