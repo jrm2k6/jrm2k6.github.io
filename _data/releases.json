@@ -1,5 +1,23 @@
 [
   {
+    "repo": "libero90",
+    "source": "jrm2k6/libero90",
+    "tag": "v0.2.23",
+    "sha": "b705e2b659bf223aac8951f589f3bfc2aeb2c2e9",
+    "date": "2026-11-13T01:25:31Z",
+    "message": "Merge pull request #3 from jrm2k6/feat/new-goal-indicator",
+    "url": null
+  },
+  {
+    "repo": "libero90",
+    "source": "jrm2k6/libero90",
+    "tag": "v0.2.22",
+    "sha": "d72686fa9ff6f4412c1d7597cd555ea170c71cf9",
+    "date": "2026-11-13T01:18:44Z",
+    "message": "Merge pull request #5 from jrm2k6/ci/release-node-22",
+    "url": null
+  },
+  {
     "repo": "melentur-macos",
     "source": "jrm2k6/melentur-macos",
     "tag": "v1.0.6",
