@@ -2,6 +2,24 @@
   {
     "repo": "libero90",
     "source": "jrm2k6/libero90",
+    "tag": "v0.2.26",
+    "sha": "3576e7905d4c9109c9461aefb0e5f285aa7902a6",
+    "date": "2026-11-15T00:51:03Z",
+    "message": "fix: leave a clip opened from the reel unmasked so it can be watched (#10)",
+    "url": null
+  },
+  {
+    "repo": "libero90",
+    "source": "jrm2k6/libero90",
+    "tag": "v0.2.25",
+    "sha": "a94c66325dda979f1875c39137f315f7709b464c",
+    "date": "2026-11-14T19:20:24Z",
+    "message": "build: stamp the latest tag into dist/manifest.json on local builds (#8)",
+    "url": null
+  },
+  {
+    "repo": "libero90",
+    "source": "jrm2k6/libero90",
     "tag": "v0.2.24",
     "sha": "45f7c7d83c83d29936f503d93843bf4250a1b75e",
     "date": "2026-11-13T05:11:44Z",
