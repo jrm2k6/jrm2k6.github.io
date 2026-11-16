@@ -2,6 +2,15 @@
   {
     "repo": "libero90",
     "source": "jrm2k6/libero90",
+    "tag": "v0.2.27",
+    "sha": "806a75f0b27b931c2bdd19c3267a98f9e04315a1",
+    "date": "2026-11-16T01:16:38Z",
+    "message": "feat: play streamff clips inline (#12)",
+    "url": null
+  },
+  {
+    "repo": "libero90",
+    "source": "jrm2k6/libero90",
     "tag": "v0.2.26",
     "sha": "3576e7905d4c9109c9461aefb0e5f285aa7902a6",
     "date": "2026-11-15T00:51:03Z",
