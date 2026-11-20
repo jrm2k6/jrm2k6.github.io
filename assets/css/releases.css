@@ -31,11 +31,13 @@
   content: "";
   position: absolute;
   left: -24px;
+  top: 50%;
   width: 9px;
   height: 9px;
   border-radius: 50%;
   background: var(--c);
   box-shadow: 0 0 0 2px #fff;
+  transform: translateY(-50%);
 }
 
 .releases-year h2 {

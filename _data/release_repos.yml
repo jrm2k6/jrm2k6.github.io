@@ -15,3 +15,6 @@
 - repo: jrm2k6/melentur-macos
   kind: macOS
   color: "#d4568f"
+- repo: jrm2k6/melentur-windows
+  kind: Windows
+  color: "#7c5cbf"
