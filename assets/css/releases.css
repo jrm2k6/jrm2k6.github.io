@@ -2,6 +2,9 @@
 
 .releases {
   --trunk: #f0a030;
+  /* horizontal center of the trunk line / dots, measured from the list's left edge */
+  --rail-x: 9.5px;
+  --dot-size: 9px;
   list-style: none;
   margin: 1.5rem 0 0;
   padding: 0 0 0 28px;
@@ -11,7 +14,7 @@
 .releases::before {
   content: "";
   position: absolute;
-  left: 9px;
+  left: calc(var(--rail-x) - 1.25px);
   top: 18px;
   bottom: 18px;
   width: 2.5px;
@@ -30,10 +33,11 @@
 .releases li::before {
   content: "";
   position: absolute;
-  left: -24px;
+  left: calc(var(--rail-x) - 28px - (var(--dot-size) / 2));
   top: 50%;
-  width: 9px;
-  height: 9px;
+  width: var(--dot-size);
+  height: var(--dot-size);
+  box-sizing: border-box;
   border-radius: 50%;
   background: var(--c);
   box-shadow: 0 0 0 2px #fff;
@@ -48,11 +52,14 @@
 }
 
 .releases li.releases-year::before {
-  left: -26px;
-  width: 9px;
-  height: 9px;
+  --ring-border: 2.5px;
+  /* content-box: border sits outside width/height, growing the ring beyond dot-size */
+  box-sizing: content-box;
+  left: calc(var(--rail-x) - 28px - (var(--dot-size) / 2) - var(--ring-border));
+  width: var(--dot-size);
+  height: var(--dot-size);
   background: #fff;
-  border: 2.5px solid var(--trunk);
+  border: var(--ring-border) solid var(--trunk);
   box-shadow: none;
 }
 
