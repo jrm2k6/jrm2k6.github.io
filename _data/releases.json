@@ -2,6 +2,24 @@
   {
     "repo": "libero90",
     "source": "jrm2k6/libero90",
+    "tag": "v0.2.29",
+    "sha": "c0b0a8c3e6842e7fd3687b403658d9acfad12cdf",
+    "date": "2026-11-21T02:17:14Z",
+    "message": "feat: add an extension icon, and draft Chrome Web Store listing copy",
+    "url": null
+  },
+  {
+    "repo": "libero90",
+    "source": "jrm2k6/libero90",
+    "tag": "v0.2.28",
+    "sha": "affb5ecece73026706d3ce1a22a5ef3a1b91f361",
+    "date": "2026-11-21T02:12:15Z",
+    "message": "fix: keep the feed walk same-origin and let game switches restart it",
+    "url": null
+  },
+  {
+    "repo": "libero90",
+    "source": "jrm2k6/libero90",
     "tag": "v0.2.27",
     "sha": "806a75f0b27b931c2bdd19c3267a98f9e04315a1",
     "date": "2026-11-16T01:16:38Z",
